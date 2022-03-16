@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>ESP8266 WebSocket</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=League+Spartan&family=Syne+Mono&display=swap" rel="stylesheet"> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://your-site-or-cdn.com/fontawesome/v5.15.4/js/all.js" data-auto-a11y="true" ></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.2/sass.min.js" integrity="sha512-lmuNSGprTM9SdDQ8WuvkeGSgUn4R7jogp37VuQ8rrdNOSHQ9UDY9PF5f/gXjhMytuvxf3NADUXL+eb7K0DvIcw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" type="text/css" href="index.sass" />
+    </head>
+	<body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <div class="container text-center" style="font-family: 'League Spartan', sans-serif;font-size: 25px;"> 
+                    <img src="data:image/png;base64,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" style="height: 50px ; width: 50px;" />IoT Egg Tray
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Sign out <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        
+        <div class = "container text-center">
+            <div class="row ">
+                <div class="col-sm card">
+                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                    Egg 1 <span id="id1"></span> <input type="radio" id = "id1" name ="id1" value="id1" disabled = "true" /> 
+                </div>
+                <div class="col-sm card">
+                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                    Egg 2 <span id="id2"></span> <input type="radio" id = "id1" name ="id1" value="id1" disabled = "true" />
+                </div>
+                <div class="col-sm card">
+                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                    Egg 3 <span id="id3"></span> <input type="radio" id = "id1" name ="id1" value="id1" disabled = "true" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm card">
+                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                    Egg 4 <span id="id4"></span>
+                </div>
+                <div class="col-sm card">
+                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                    Egg 5 <span id="id5"></span>
+                </div>
+                <div class="col-sm card">
+                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                    Egg 6 <span id="id6"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm card">
+                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                    Egg 7 <span id="id7"></span>
+                </div>
+                <div class="col-sm card">
+                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                    Egg 8 <span id="id8"></span>
+                </div>
+                <div class="col-sm card">
+                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                    Egg 9 <span id="id9"></span>
+                </div>
+            </div>
+        </div>
+		<script type="text/javascript">
+            var url = window.location.host; // hàm trả về url của trang hiện tại kèm theo port
+            var ws = new WebSocket('ws://' + url + '/ws'); // mở 1 websocket với port 8000
+            console.log('connecting...')
+            ws.onopen = function() //khi websocket được mở thì hàm này sẽ được thưc hiện
+            {
+                document.getElementById('status').innerHTML = 'Connected';
+                console.log('connected...');  
+            };
+            ws.onmessage = function(evento){  //server nhan thong tin trang thai va day len client
+                var lednum = JSON.parse(evento.data);
+                var id1 = lednum.data;
+                document.getElementById("id1").innerHTML = lednum.id1;
+                var id2 = lednum.data;
+                document.getElementById("id2").innerHTML = lednum.id2;
+                var id3 = lednum.data;
+                document.getElementById("id3").innerHTML = lednum.id3;
+                var id4 = lednum.data;
+                document.getElementById("id4").innerHTML = lednum.id4;
+                var id5 = lednum.data;
+                document.getElementById("id5").innerHTML = lednum.id5;
+                var id6 = lednum.data;
+                document.getElementById("id6").innerHTML = lednum.id6;
+                var id7 = lednum.data;
+                document.getElementById("id7").innerHTML = lednum.id7;
+                var id8 = lednum.data;
+                document.getElementById("id8").innerHTML = lednum.id8;
+                var id9 = lednum.data;
+                document.getElementById("id9").innerHTML = lednum.id9;
+            }
+            id1.onchange = function(){
+                if (id1 != 0){
+                    id1.checked = true;
+                } else {
+                    id1.checked = false;
+                }
+            }
+            </script>
+	</body>
+</html>
