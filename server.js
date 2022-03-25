@@ -24,6 +24,9 @@ app.get("/", function (req,res) {
 app.get("/profile", function (req,res) {
     res.render("profile.html");
 })
+app.get("/eggtrays", function (req,res) {
+    res.render("eggtrays.html");
+});
 
 app.listen(PORT, () => {
     console.log(`Listening on http://localhost:${PORT}`);
