@@ -4,9 +4,9 @@
 // Only owner can do this
 
 const admin = require("firebase-admin");
-const serviceAccount = require("./ServiceAccountKey.json");
+// const serviceAccount = require("./ServiceAccountKey.json");
 const firebaseConfig = {
-    credential: admin.credential.cert(serviceAccount),
+    // credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://testing-7a1f0-default-rtdb.firebaseio.com/"
 };
 const app = admin.initializeApp(firebaseConfig);
