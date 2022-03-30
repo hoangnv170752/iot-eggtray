@@ -19,7 +19,9 @@ const db = require("./db");
 db.users.on('value', (snap) => {
     // obj = snap.val();
     console.log(snap.val()['0001']);
-})
+}) 
+// const searchNavBar = document.getElementById('eggtrayid');
+
 
 const express = require("express");
 const bodyParser = require("body-parser");
