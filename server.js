@@ -1,6 +1,17 @@
+var allTray = {};
+var allUser = {};
+const db = require("./db");
+db.trays.once('value', (snap) => {
+    allTray = snap.val();
+})
+db.users.once('value', (snap) => {
+    allUser = snap.val();
+})
+
+
 function eggtray(stt, oldStt, oldTime) {
     this.stt = stt;
-    this.time = oldTime;
+    this.time = oldTime; //biên thời gian lưu được trong server 
     const t = new Date();
     const strT = ("" + t.getFullYear()).slice(2) + ":" +
         ("0" + (t.getMonth() + 1)).slice(-2) + ":" +
@@ -13,14 +24,7 @@ function eggtray(stt, oldStt, oldTime) {
     })
 }
 
-const obj = new eggtray([], [], []);
-
-const db = require("./db");
-db.users.on('value', (snap) => {
-    // obj = snap.val();
-    console.log(snap.val()['0001']);
-}) 
-// const searchNavBar = document.getElementById('eggtrayid');
+// const obj = new eggtray([], [], []);
 
 
 const express = require("express");
@@ -49,30 +53,33 @@ app.get("/profile", function(req, res) {
 app.get("/eggtrays", function(req, res) {
     res.render("eggtrays.html");
 });
+const serverIp = Object.values(require("os").networkInterfaces())
+    .flat()
+    .filter((item) => !item.internal && item.family === "IPv4")[0]
+    .address;
 
-var mode = 2;
+app.listen(PORT, () => {
+    console.log(`Listening on http://${serverIp}:${PORT}`);
+});
+
+/* Communicate with ESP8266 */
+const { editTray, settingMode } = require('./obj');
+
+const mode = 0,
+    t = 1000;
 var count = 50;
-var t = 3000;
 app.get("/config", async(req, res) => {
-    data = {
-        mode: mode,
-        time: t
-    }
+    const data = new settingMode(mode, t);
     count = count - 1;
-    if (count > 0) {
-        mode = 0;
-    } else {
+    if (count == 0) {
         count = 50;
-        mode = 2;
-        t = 8000 - t;
-    }
-    res.status(200).send(data);
+        res.status(200).json(data);
+    } else res.status(200).json({ mode: 0 });
 })
 
 app.post("/update", (req, res) => {
+    const id = req.body.id;
+    allTray[id] = editTray(allTray[id], req.body.stt);
+    console.log(allTray)
     res.sendStatus(200);
 })
-
-app.listen(PORT, () => {
-    console.log(`Listening on http://localhost:${PORT}`);
-});

@@ -12,27 +12,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="https://your-site-or-cdn.com/fontawesome/v5.15.4/js/all.js" data-auto-a11y="true" ></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.2/sass.min.js" integrity="sha512-lmuNSGprTM9SdDQ8WuvkeGSgUn4R7jogp37VuQ8rrdNOSHQ9UDY9PF5f/gXjhMytuvxf3NADUXL+eb7K0DvIcw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <link rel="stylesheet" type="text/css" href="index.sass" />
-        <!-- <style type="text/css">
-			html,
-			body {
-				height: 100%;
-			}
-			html {
-				display: table;
-				margin: auto;
-			}
-			body {
-				display: table-cell;
-				vertical-align: middle;
-			}
-			.margin {
-			margin: 0 !important;
-			}
-		</style> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.2/sass.min.js" integrity="sha512-lmuNSGprTM9SdDQ8WuvkeGSgUn4R7jogp37VuQ8rrdNOSHQ9UDY9PF5f/gXjhMytuvxf3NADUXL+eb7K0DvIcw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>       
     </head>
-	<body style="background-color: #d3d3d3">
+	<body style="background-color: #3d4679b9;">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
             <a class="navbar-brand" href="/profile">
@@ -49,6 +31,11 @@
                   <a class="nav-link" href="/eggtrays">Egg tray list <span class="sr-only">(current)</span></a>
                 </li>
               </ul>
+              <ul class="navbar-nav">
+                  <li class="nav-item active">
+                      <span id = "tray_id"></span>
+                  </li>
+              </ul>
               <ul class="navbar-nav mr-auto">
                 <form class="d-flex">
                   <input class="form-control me-2" type="search" placeholder="Search Tray ID" aria-label="Search" id="searchBar">
@@ -62,81 +49,60 @@
                 </li>
               </ul>
             </div>
-        </div>
+            </div>
           </nav>
-        
-        <div class = "container text-center">
-            <div class="row ">
-                <div class="col-md card">
-                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+          <div class="bg mt-5" style="background-image: url('https://i.ibb.co/z8PsSJ6/egg-tray-cad-save.png'); background-position: center; background-repeat: no-repeat; position: relative; height: 447px;"> 
+        <div class = "container text-center p-2">
+            <!-- <div class="bg mt-5" style="background-image: url('https://i.ibb.co/Q9pKdcM/egg-tray-cad.png'); background-position: center; background-repeat: no-repeat; position: relative; height: 400px;"> -->
+            <div class="row align-items-center mt-5"  >
+                <div class="col-md mt-1"> 
+                    <img class="card-img-top" src="https://i.ibb.co/zQR4rty/Picture1.png" alt="egg" style="transform: rotate(90deg);">
                     Egg 1 <span id="id1"></span> 
-                </div>
-                <div class="col-md card">
-                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                </div> 
+                <div class="col-md mt-1">
+                    <img class="card-img-top" src="https://i.ibb.co/zQR4rty/Picture1.png" alt="egg" style="transform: rotate(90deg);">
                     Egg 2 <span id="id2"></span> 
                 </div>
-                <div class="col-md card">
-                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                <div class="col-md mt-1">
+                    <img class="card-img-top" src="https://i.ibb.co/zQR4rty/Picture1.png" alt="egg" style="transform: rotate(90deg);">
                     Egg 3 <span id="id3"></span> 
                 </div>
-                <div class="col-md card">
-                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                <div class="col-md mt-1">
+                    <img class="card-img-top" src="https://i.ibb.co/zQR4rty/Picture1.png" alt="egg" style="transform: rotate(90deg);">
                     Egg 4 <span id="id4"></span>
                 </div>
-                <div class="col-md card">
-                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                <div class="col-md mt-1">
+                    <img class="card-img-top" src="https://i.ibb.co/zQR4rty/Picture1.png" alt="egg" style="transform: rotate(90deg);">
                     Egg 5 <span id="id5"></span>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md card">
-                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+            </div>
+            <div class="container text-center p-xxl-2 mt-2">
+            <div class="row align-items-center">
+                <div class="col-md mt-1 ">
+                    <img class="card-img-top" src="https://i.ibb.co/zQR4rty/Picture1.png" alt="egg" style="transform: rotate(90deg);">
                     Egg 6 <span id="id6"></span>
                 </div>
-                <div class="col-md card">
-                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                <div class="col-md mt-1">
+                    <img class="card-img-top" src="https://i.ibb.co/zQR4rty/Picture1.png" alt="egg" style="transform: rotate(90deg);">
                     Egg 7 <span id="id7"></span>
                 </div>
-                <div class="col-md card">
-                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                <div class="col-md mt-1">
+                    <img class="card-img-top" src="https://i.ibb.co/zQR4rty/Picture1.png" alt="egg" style="transform: rotate(90deg);">
                     Egg 8 <span id="id8"></span>
                 </div>
-                <div class="col-md card">
-                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                <div class="col-md mt-1">
+                    <img class="card-img-top" src="https://i.ibb.co/zQR4rty/Picture1.png" alt="egg" style="transform: rotate(90deg);">
                     Egg 9 <span id="id9"></span>
                 </div>
-                <div class="col-md card">
-                    <img class="card-img-top" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg" alt="egg" >
+                <div class="col-md mt-1">
+                    <img class="card-img-top" src="https://i.ibb.co/zQR4rty/Picture1.png" alt="egg" style="transform: rotate(90deg);">
                     Egg 10 <span id="id10"></span>
                 </div>
             </div>
-        </div>
-        <!-- <div id="login-page" class="row">
-            <div class="col s12 z-depth-6 card-panel">
-                <div class="login-form login-div">
-                    <div class="row">
-                        <div class="input-field col s12 center">
-                            <p class="center login-form-text" style="font-weight: 800; color: rgb(90, 128, 0);">WELCOME TO YOUR ACCOUNT</p>
-                        </div>
-                    </div>
-                    <div class="row margin">
-                        <div class="input-field col s12"style="font-weight: 800; color: rgb(90, 128, 0);" id="wrapper">
-                            
-                        </div>
-                    </div> <br><br>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <button class="btn waves-effect green waves-light col s12" id="verify" onclick="sendVerificationEmail()">Request Verification Link</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <button class="btn waves-effect green waves-light col s12" id="register" onclick="logout()">Log out</button>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div> -->
+        </div>
+    </div>
         <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
         <script>
             // Initialize Firebase
@@ -184,43 +150,41 @@
 					window.location.assign("/");
 				});
             }     
-            var url = window.location.host; // hàm trả về url của trang hiện tại kèm theo port
-            var ws = new WebSocket('ws://' + url + '/ws'); // mở 1 websocket với port 8000
-            console.log('connecting...')
-            ws.onopen = function() //khi websocket được mở thì hàm này sẽ được thưc hiện
-            {
-                document.getElementById('status').innerHTML = 'Connected';
-                console.log('connected...');  
-            };
-            ws.onmessage = function(evento){  //server nhan thong tin trang thai va day len client
-                var lednum = JSON.parse(evento.data);
-                var id1 = lednum.data;
-                document.getElementById("id1").innerHTML = lednum.id1;
-                var id2 = lednum.data;
-                document.getElementById("id2").innerHTML = lednum.id2;
-                var id3 = lednum.data;
-                document.getElementById("id3").innerHTML = lednum.id3;
-                var id4 = lednum.data;
-                document.getElementById("id4").innerHTML = lednum.id4;
-                var id5 = lednum.data;
-                document.getElementById("id5").innerHTML = lednum.id5;
-                var id6 = lednum.data;
-                document.getElementById("id6").innerHTML = lednum.id6;
-                var id7 = lednum.data;
-                document.getElementById("id7").innerHTML = lednum.id7;
-                var id8 = lednum.data;
-                document.getElementById("id8").innerHTML = lednum.id8;
-                var id9 = lednum.data;
-                document.getElementById("id9").innerHTML = lednum.id9;
-            }
-            id1.onchange = function(){
-                if (id1 != 0){
-                    id1.checked = true;
-                } else {
-                    id1.checked = false;
-                }
-            }
- 
+            // var url = window.location.host; // hàm trả về url của trang hiện tại kèm theo port
+            // var ws = new WebSocket('ws://' + url + '/ws'); // mở 1 websocket với port 8000
+            // console.log('connecting...')
+            // ws.onopen = function() //khi websocket được mở thì hàm này sẽ được thưc hiện
+            // {
+            //     document.getElementById('status').innerHTML = 'Connected';
+            //     console.log('connected...');  
+            // };
+            var trayid = document.getElementById("tray_id");
+            var id1 =  document.getElementById("id1");
+            var id2 =  document.getElementById("id2");
+            var id3 =  document.getElementById("id3");
+            var id4 =  document.getElementById("id4");
+            var id5 =  document.getElementById("id5");
+            var id6 =  document.getElementById("id6");
+            var id7 =  document.getElementById("id7");
+            var id8 =  document.getElementById("id8");
+            var id9 =  document.getElementById("id9");
+            var id10 =  document.getElementById("id10");
+            
+            
+            // id1.onchange = function(){
+            //     if (id1 != 0){
+            //         id1.checked = true;
+            //     } else {
+            //         id1.checked = false;
+            //     }
+            // }
+            const db = require("../db.js");
+            // viết 1 function request xuống db     
+            const rootRef = db().ref('tray_id');
+            rootRef.on('value', (snapshot) => {
+                const trays = snapshot.val();
+                console.log(trays);
+            })
         </script>
     <script src="main.js"></script>
 	</body>
